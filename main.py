@@ -1,14 +1,14 @@
 from src.api_utils import *
-from src.vacancy import *
 from src.json_saver import JSONSaver
 
 
 def main():
     while True:
-        print("1 - Загрузить вакансии Head Hunter")
+        print("\n1 - Загрузить вакансии Head Hunter")
         print("2 - Загрузить вакансии Super Job")
         print("3 - Отсортировать вакансии по ЗП")
-        print("4 - Удалить данные из файлов")
+        print("4 - Показать топ-10 вакансий по ЗП")
+        print("5 - Удалить данные из файлов")
         print("Exit - Завершить программу\n")
 
         user_input = input("Выберите пункт меню - ")
@@ -32,9 +32,12 @@ def main():
 
         elif int(user_input) == 3:
             salary_input = int(input("Введите ЗП 'от' - "))
-            JSONSaver.get_vacancies_by_salary(salary_from=salary_input)
+            JSONSaver.get_vacancies_by_salary(salary_input)
 
         elif int(user_input) == 4:
+            JSONSaver.top_vacancies()
+
+        elif int(user_input) == 5:
             JSONSaver.delete_vacancy()
 
         else:

@@ -7,7 +7,9 @@ import os
 
 
 class InitApi(ABC):
-
+    """
+    Абстрактный класс для методов класса
+    """
     @abstractmethod
     def get_request(self):
         pass
@@ -18,7 +20,10 @@ class InitApi(ABC):
 
 
 class HeadHunterAPI(InitApi):
-
+    """
+    Класс для получения данных API HeadHunter.
+    Данные записывает в 'data/hh_json.json'
+    """
     def __init__(self, title, pages):
         self.title = title
         self.pages = pages
@@ -71,7 +76,11 @@ class HeadHunterAPI(InitApi):
 
 
 class SuperJobAPI(InitApi):
-
+    """
+    Класс для получения данных API SuperJob.
+    Данные записывает в 'data/sj_json.json'
+    Для работы необходим ключ в виртуальном окружении системы.
+    """
     superjob_api = os.getenv("SJ_API")
 
     def __init__(self, title, pages):
@@ -120,11 +129,3 @@ class SuperJobAPI(InitApi):
             JSONSaver().add_vacancy(self.vacancies_sj, "sj_json.json")
 
         return self.vacancies_sj
-
-
-# hh_api = HeadHunterAPI("python", 1)
-# hh_vacancies = hh_api.get_request()
-# hh_vacancies_ = hh_api.get_parsed_data()
-# sj_api = SuperJobAPI("python", 1)
-# sj_vacancies = sj_api.get_request()
-# sj_vacancies_ = sj_api.get_parsed_data()

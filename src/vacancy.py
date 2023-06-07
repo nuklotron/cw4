@@ -1,4 +1,7 @@
 class Vacancy:
+    """
+    Класс приводит получаемые данные к общему виду для последующей записи в JSON формате.
+    """
     def __init__(self, title="нет названия", salary_from=0, salary_to=0, description="нет описания", city="нет города", url="нет ссылки"):
         self.title = title
         self.salary_from = salary_from
